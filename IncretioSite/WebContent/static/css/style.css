@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.full_block {
+	width: 600px;
+	margin: 15px auto 15px auto;
+	padding: 20px;
+	background: #bbbbbb;
+	border: 2px solid rgba(0, 0, 0, 0.75);
+	border-radius: 25px;
+	box-shadow: 5px 5px 5px rgba(50, 0, 0, 0.5);
+}
+.full_block:nth-child(odd) {
+	background: #bbbb90;
+}
+.time_block {	
+	float: right;
+	font-style: italic;
+	font-weight: bold;
+}
+.like_icon {
+	float: left;
+	margin-top: -7px;
+	width: 32px;
+	height: 32px;	
+	background: url(/IncretioSite/static/img/like_icon.png) no-repeat 0 0;
+	opacity: 0.5;
+	cursor: pointer;
+	transition: filter 0.5s, opacity 0.5s;
+}
+.like_icon:hover {
+	opacity: 1;
+	filter: drop-shadow(0px 0px 10px red);
+	
+}
+.quote_block {
+	width: 600px;
+	text-align: justify;
+	text-indent: 30px;
+}
+.author_block {
+	text-color: blue;
+	text-align: right;
+}
+.author_name {
+	font-weight: bold;
+}
+.author_name:before {
+	content: "[ ";
+}
+.author_name:after {
+	content: " ]";
+}
+:focus {
+	outline: none;
+}
