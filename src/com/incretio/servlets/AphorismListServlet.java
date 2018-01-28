@@ -16,8 +16,7 @@ import com.incretio.utils.ModelHelper;
 import com.incretio.jdbc.AphorismJDBC;
 import com.incretio.jdbc.BaseJDBC;
 
-@WebServlet("/AphorismServlet")
-public class AphorismServlet extends HttpServlet {
+public class AphorismListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +30,7 @@ public class AphorismServlet extends HttpServlet {
 		int likeCount = BaseJDBC.getLikeCount();
 		request.setAttribute("likeCount", likeCount);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/aphorism.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/aphorism_list.jsp");
 		dispatcher.forward(request, response);
 	}
 

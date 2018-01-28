@@ -9,6 +9,10 @@ public class AphorismVo {
 	private String text;
 	private String author;
 
+	public AphorismVo() {
+		super();
+	}
+
 	public AphorismVo(int id, Date createdTime, String text, String author) {
 		super();
 		this.id = id;

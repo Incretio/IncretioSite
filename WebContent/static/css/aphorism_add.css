@@ -1,0 +1,19 @@
+.table {
+	display: table;
+	margin: 10px;
+}
+.row {
+	display: table-row;				
+}
+.cell {
+	display: table-cell;
+	vertical-align: top;
+	padding: 5px;
+}
+#text {
+	width: 500px;
+	height: 100px;
+}
+#author {
+	width: 500px;
+}

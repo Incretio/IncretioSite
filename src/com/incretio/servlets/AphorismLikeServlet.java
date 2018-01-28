@@ -16,10 +16,10 @@ import com.incretio.utils.ModelHelper;
 import com.incretio.jdbc.AphorismJDBC;
 import com.incretio.jdbc.BaseJDBC;
 
-@WebServlet("/LikeServlet")
-public class LikeServlet extends HttpServlet {
+public class AphorismLikeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(request.getParameter("id"));
