@@ -22,8 +22,14 @@ public class AphorismLikeServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("id"));
-		response.getWriter().write("1");
+		int aphorism_id = Integer.valueOf(request.getParameter("id"));		
+		String user_id = request.getRemoteHost();
+		
+		BaseJDBC.addLike(user_id, aphorism_id);
+		
+		int likeCount = BaseJDBC.getLikeCount(aphorism_id);
+		System.out.println("likeCount = " + likeCount);
+		response.getWriter().write(String.valueOf(likeCount));
 	}
 
 }

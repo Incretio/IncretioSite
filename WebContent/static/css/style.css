@@ -8,7 +8,7 @@
 	border-radius: 25px;
 	box-shadow: 5px 5px 5px rgba(50, 0, 0, 0.5);
 }
-.full_block:nth-child(odd) {
+.aphorism_block:nth-child(odd) {
 	background: #bbbb90;
 }
 .time_block {	
@@ -37,7 +37,7 @@
 	text-indent: 30px;
 }
 .author_block {
-	text-color: blue;
+	color: blue;
 	text-align: right;
 	font-weight: bold;
 }

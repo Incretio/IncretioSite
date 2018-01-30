@@ -8,6 +8,8 @@ public class AphorismVo {
 	private Date createdTime;
 	private String text;
 	private String author;
+	private int likeCount;
+	private boolean wasLiked;
 
 	public AphorismVo() {
 		super();
@@ -19,6 +21,14 @@ public class AphorismVo {
 		this.createdTime = createdTime;
 		this.text = text;
 		this.author = author;
+	}
+	
+	public int getLikeCount() {
+		return likeCount;
+	}
+	
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 
 	public int getId() {
@@ -51,6 +61,14 @@ public class AphorismVo {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	
+	public boolean isWasLiked() {
+		return wasLiked;
+	}
+
+	public void setWasLiked(boolean wasLiked) {
+		this.wasLiked = wasLiked;
 	}
 
 }

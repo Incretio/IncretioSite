@@ -6,7 +6,7 @@ function invertClass (element, className) {
 		removeClass(element, className);
 		return false;
 	} else {
-		addClass(element, className);
+		elent.addClass(element, className);
 		return true;
 	}
 }

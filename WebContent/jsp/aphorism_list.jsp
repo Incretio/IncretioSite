@@ -11,15 +11,19 @@
 		<meta charset="utf-8">
 		<title>Близкие по духу мысли и цитаты.</title>	
 		<link type="text/css" rel="stylesheet" href="<c:url value="/static/css/style.css" />" />	
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="<c:url value="/static/js/aphorism.js" />" ></script>
 		<script src="<c:url value="/static/js/utils.js" />" ></script>
 	<body>			
 		<c:forEach var="aphorism" items="${aphorismList}">
+		<c:set var="wasLiked" value="${aphorism.wasLiked ? 'liked' : ''}"/>
+		<!--<c:if test = "${aphorism.wasLiked}">
+			<c:set var="wasLiked" value="liked"/>
+		</c:if>-->
 		<div class="aphorism_block">
-			<a href="#" class="like_link liked" onclick="likeClick(this, ${aphorism.id})">
+			<a href="javascript:void(0)" class="like_link ${wasLiked}" onclick="likeClick(event, this, ${aphorism.id})">
 				<span class="like_icon"></span>				
-				<span class="like_count">${likeCount}</span>				
+				<span class="like_count">${aphorism.likeCount}</span>				
 			</a>
 			<div class="time_block">										
 				<fmt:formatDate value="${aphorism.createdTime}" pattern="dd MMM yyyy в HH:mm:ss"/>											
