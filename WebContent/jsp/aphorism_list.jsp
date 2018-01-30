@@ -17,11 +17,8 @@
 	<body>			
 		<c:forEach var="aphorism" items="${aphorismList}">
 		<c:set var="wasLiked" value="${aphorism.wasLiked ? 'liked' : ''}"/>
-		<!--<c:if test = "${aphorism.wasLiked}">
-			<c:set var="wasLiked" value="liked"/>
-		</c:if>-->
 		<div class="aphorism_block">
-			<a href="javascript:void(0)" class="like_link ${wasLiked}" onclick="likeClick(event, this, ${aphorism.id})">
+			<a href="javascript:void(0)" class="like_link ${wasLiked}" onclick="likeClick(this, ${aphorism.id})">
 				<span class="like_icon"></span>				
 				<span class="like_count">${aphorism.likeCount}</span>				
 			</a>
