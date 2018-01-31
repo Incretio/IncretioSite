@@ -23,7 +23,7 @@ public class AphorismLikeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int aphorism_id = Integer.valueOf(request.getParameter("id"));		
-		String user_id = request.getRemoteHost();
+		String user_id = request.getSession().getId();
 		
 		BaseJDBC.addLike(user_id, aphorism_id);
 		

@@ -21,7 +21,7 @@ public class AphorismListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String user_id = request.getRemoteAddr();
+		String user_id = request.getSession().getId();
 		// aphorismList
 		List<AphorismVo> aphorismList = AphorismJDBC.getAllAphorism();
 		aphorismList = ModelHelper.formatForHtml(aphorismList);

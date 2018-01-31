@@ -10,10 +10,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Близкие по духу мысли и цитаты.</title>	
-		<link type="text/css" rel="stylesheet" href="<c:url value="/static/css/style.css" />" />	
+		<link type="text/css" rel="stylesheet" href="/static/css/style.css" />	
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="<c:url value="/static/js/aphorism.js" />" ></script>
-		<script src="<c:url value="/static/js/utils.js" />" ></script>
+		<script src="/static/js/aphorism.js"></script>
+		<script src="/static/js/utils.js" ></script>
 	<body>			
 		<c:forEach var="aphorism" items="${aphorismList}">
 		<c:set var="wasLiked" value="${aphorism.wasLiked ? 'liked' : ''}"/>

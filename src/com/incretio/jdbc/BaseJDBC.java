@@ -14,7 +14,7 @@ public class BaseJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			try (Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/IncretioSite?user=root&password=123456789");
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8");
 					PreparedStatement stmt = conn.prepareStatement(
 							"SELECT COUNT(*) as likeCount FROM AphorismLike WHERE aphorism_id = ?");) {
 				stmt.setInt(1, aphorism_id);
@@ -37,7 +37,7 @@ public class BaseJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			try (Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/IncretioSite?user=root&password=123456789");
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8");
 					PreparedStatement stmt = conn.prepareStatement(
 							"SELECT COUNT(*) as likeCount FROM AphorismLike WHERE user_id = ? AND aphorism_id = ?");) {
 				stmt.setString(1, user_id);
@@ -59,7 +59,7 @@ public class BaseJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			try (Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/IncretioSite?user=root&password=123456789")) {
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8")) {
 				PreparedStatement pstmt = conn
 						.prepareStatement("DELETE FROM AphorismLike WHERE aphorism_id = ? AND user_id = ?");
 				pstmt.setInt(1, aphorism_id);

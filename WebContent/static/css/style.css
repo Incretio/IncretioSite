@@ -21,7 +21,7 @@
 	margin-top: -7px;
 	width: 32px;
 	height: 32px;	
-	background: url(/IncretioSite/static/img/like_icon.png) no-repeat 0 0;
+	background: url(/static/img/like_icon.png) no-repeat 0 0;
 	opacity: 0.5;
 	transition: filter 0.5s, opacity 0.5s;
 }

@@ -5,7 +5,7 @@
 <html>
 	<head>		
 		<meta charset="utf-8">	
-		<link rel="stylesheet" type="text/css" href="<c:url value="/static/css/aphorism_add.css" />">
+		<link rel="stylesheet" type="text/css" href="/static/css/aphorism_add.css">
 		<script src="<c:url value="/static/js/utils.js" />"></script>
 		<script>
 			window.onload = function setDateTimeToNow() {

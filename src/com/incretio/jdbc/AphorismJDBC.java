@@ -19,7 +19,7 @@ public class AphorismJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			try (Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/IncretioSite?user=root&password=123456789");
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8");
 					PreparedStatement stmt = conn
 							.prepareStatement("INSERT INTO Aphorism (createdTime, text, author) VALUES (?, ?, ?)");) {
 				stmt.setTimestamp(1, new Timestamp(aphorism.getCreatedTime().getTime()));
@@ -40,7 +40,7 @@ public class AphorismJDBC {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			try (Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/IncretioSite?user=root&password=123456789");
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8");
 					Statement stmt = conn.createStatement();) {
 				ResultSet rs = null;
 				if (stmt.execute("SELECT * FROM Aphorism ORDER BY createdTime DESC")) {
