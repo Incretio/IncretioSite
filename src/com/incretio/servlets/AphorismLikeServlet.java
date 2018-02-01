@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.incretio.models.AphorismVo;
 import com.incretio.utils.ModelHelper;
-
+import com.incretio.utils.WebHelper;
 import com.incretio.jdbc.AphorismJDBC;
 import com.incretio.jdbc.BaseJDBC;
 
@@ -23,7 +23,7 @@ public class AphorismLikeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int aphorism_id = Integer.valueOf(request.getParameter("id"));		
-		String user_id = request.getSession().getId();
+		String user_id = WebHelper.getIpFromRequest(request);
 		
 		BaseJDBC.addLike(user_id, aphorism_id);
 		
