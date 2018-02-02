@@ -1,5 +1,6 @@
 package com.incretio.utils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class WebHelper {
@@ -28,5 +29,26 @@ public class WebHelper {
 			ip = ip.trim();
 		}
 		return ip;
+	}
+
+	public static String getYmUidFromCookies(final HttpServletRequest request) {
+		String uidName = "_ym_uid"; 
+		String defaultValue = "";
+		if (request == null) {
+			return defaultValue;
+		}
+		Cookie[] cookies = request.getCookies();
+		if (cookies == null) {
+			return defaultValue;
+		}
+
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equalsIgnoreCase(uidName)) {
+				return cookie.getValue();
+			}
+		}
+		
+		return defaultValue;
+
 	}
 }
