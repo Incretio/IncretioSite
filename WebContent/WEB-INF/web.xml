@@ -22,7 +22,7 @@
   
   <servlet-mapping>
     <servlet-name>aphorism_like</servlet-name>
-    <url-pattern>/aphorism_like</url-pattern>
+    <url-pattern>*/aphorism_like</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
