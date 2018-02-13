@@ -1,36 +1,82 @@
 <html>
         <head>
                 <script src="https://vk.com/js/api/openapi.js?152" type="text/javascript"></script>
+                <script>
+                        function getVkCookieValue(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = getCookie("vk_app_6368146");
+                                var ca = decodedCookie.split("&");
+                                for(var i = 0; i <ca.length; i++) {
+                                        var c = ca[i];
+                                        while (c.charAt(0) == ' ') {
+                                                c = c.substring(1);
+                                        }
+                                        if (c.indexOf(name) == 0) {
+                                                return c.substring(name.length, c.length);
+                                        }
+                                }
+                                return "";
+                        }
+                        function getCookie(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = decodeURIComponent(document.cookie);
+                                var ca = decodedCookie.split(';');
+                                for(var i = 0; i <ca.length; i++) {
+                                        var c = ca[i];
+                                        while (c.charAt(0) == ' ') {
+                                                c = c.substring(1);
+                                        }
+                                        if (c.indexOf(name) == 0) {
+                                                return c.substring(name.length, c.length);
+                                        }
+                                }
+                                return "";
+                        }
+
+                        function checkCookie(cname) {
+                                var cvalue = getCookie(cname);
+                                return (cvalue != "");
+                        }
+                </script>
+                <script>
+
+                </script>
+        </head>
+		<body>
+                <input type="button" onclick="login_in_vk()"/>
+
                 <script type="text/javascript">
                   VK.init({
                         apiId: 6368146
                   });
+                  var userId = getVkCookieValue("mid");
+                  console.log(userId);
+                  if (userId != "") {
+                        console.log("update like icon for current user");
+                  } else {
+                        console.log("need to request the vk auth");
+                  }
                         function login_in_vk() {
                                 VK.Auth.login(function(event) {
-                                        console.log("VK.Auth.login()");
-                                        console.log(event.session.expire);
-                                        console.log(event.session.mid);
-                                        console.log(event.session.secret);
-                                        console.log(event.session.sid);
-                                        console.log(event.session.sig);
-                                        console.log(event.session.user.domain);
-                                        console.log(event.session.user.first_name);
-                                        console.log(event.session.user.href);
-                                        console.log(event.session.user.id);
-                                        console.log(event.session.user.last_name);
-                                        console.log(event.session.user.nickname);
-                                        console.log(event.status);
+                                        console.log(status);
                                 });
                         }
                 </script>
-        </head>
-
-        <body>
-                <input type="button" onclick="login_in_vk()"/>
         </body>
 </html>
+		
 
 
 <!-- 
 после того как залогинились, id пользователя хранится в куках
  -->
+ 
+ <!--
+cookie in browser: 
+vk_app_6368146=
+expire=1518508512&
+mid=39349594&
+secret=oauth&
+sid=112adf2856bee8056a3508ca470aafe7ed4831ecea28d8bc9b941dace0859ba139476299deb7a201f450c&
+sig=301f3ea5d021736e67fc21c461089022
+  -->
