@@ -35,4 +35,40 @@
 		</c:forEach>
 	</body>
 </html>	
+
+<!-- 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demo</title>
+		<style>
+			.vk_auth {
+				height: 48px;
+				width: 48px;
+				display: block;
+			}
+			.vk_logo {				
+				background: url(/home/rodin/Downloads/vk_icon.png) no-repeat;
+				height: 48px;
+				width: 48px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:void(0)" class="vk_auth">
+			<div class="vk_logo"></div> 
+		</a>
+		<script>
+			document.querySelector(".vk_auth").onclick = onVkAuthClick;
+			
+			function onVkAuthClick() {
+				console.log("i click to vk auth!!!");
+			}
+		</script>
+	</body>
+
+</html>
+
+ -->
 	
