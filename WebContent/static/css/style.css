@@ -50,7 +50,13 @@
 :focus {
 	outline: none;
 }
-a {
-	color: black;
-	text-decoration: none;
+.vk_icon {	
+	float: left;
+	background: url(/static/img/vk_icon.png) no-repeat;
+	height: 48px;
+	width: 48px;
+}
+
+.link {
+	cursor: pointer;
 }

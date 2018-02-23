@@ -15,23 +15,49 @@ import com.incretio.models.AphorismVo;
 import com.incretio.utils.BaseAdapter;
 import com.incretio.utils.ModelHelper;
 import com.incretio.utils.WebHelper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.incretio.jdbc.AphorismJDBC;
 import com.incretio.jdbc.BaseJDBC;
 
 public class AphorismLikeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	class AphorismInfo {
+		private int likeCount;
+		private boolean userLiked;
+		public int getLikeCount() {
+			return likeCount;
+		}
+		public void setLikeCount(int likeCount) {
+			this.likeCount = likeCount;
+		}
+		public boolean isUserLiked() {
+			return userLiked;
+		}
+		public void setUserLiked(boolean userLiked) {
+			this.userLiked = userLiked;
+		}
+		
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int aphorism_id = Integer.valueOf(request.getParameter("id"));		
-		String user_id = BaseAdapter.getUserId(request);
+		int aphorismId = Integer.valueOf(request.getParameter("id"));		
+		String userId = BaseAdapter.getUserId(request);
 		
-		BaseJDBC.addLike(user_id, aphorism_id);
+		BaseJDBC.addLike(userId, aphorismId);
 		
-		int likeCount = BaseJDBC.getLikeCount(aphorism_id);
-		System.out.println("likeCount = " + likeCount);
-		response.getWriter().write(String.valueOf(likeCount));
+		int likeCountLocal = BaseJDBC.getLikeCount(aphorismId);
+		boolean userLikedLocal = BaseJDBC.wasLiked(userId, aphorismId);
+		//System.out.println("likeCount = " + likeCount);
+		//response.getWriter().write(String.valueOf(likeCount));
+		AphorismInfo aphorismInfo = new AphorismInfo();
+		aphorismInfo.setLikeCount(likeCountLocal);
+		aphorismInfo.setUserLiked(userLikedLocal);
+		response.setContentType("application/json");
+		new Gson().toJson(aphorismInfo, response.getWriter());
 	}
 
 }

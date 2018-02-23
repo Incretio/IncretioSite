@@ -22,7 +22,7 @@ public class AphorismListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {		
-		String user_id = BaseAdapter.getUserId(request);
+		String userId = BaseAdapter.getUserId(request);
 		// aphorismList
 		List<AphorismVo> aphorismList = AphorismJDBC.getAllAphorism();
 		aphorismList = ModelHelper.formatForHtml(aphorismList);
@@ -30,7 +30,7 @@ public class AphorismListServlet extends HttpServlet {
 		// likeCount
 		aphorismList.forEach(value -> value.setLikeCount(BaseJDBC.getLikeCount(value.getId())));
 		// wasLiked
-		aphorismList.forEach(value -> value.setWasLiked(BaseJDBC.wasLiked(user_id, value.getId())));
+		aphorismList.forEach(value -> value.setWasLiked(BaseJDBC.wasLiked(userId, value.getId())));
 
 		request.setAttribute("aphorismList", aphorismList);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/aphorism_list.jsp");

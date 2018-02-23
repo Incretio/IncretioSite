@@ -31,8 +31,15 @@ public class WebHelper {
 		return ip;
 	}
 
+	public static String getUserIdFromCookies(final HttpServletRequest request) {
+		return getValueFromCookies(request, "userId");
+	}
+		
 	public static String getYmUidFromCookies(final HttpServletRequest request) {
-		String uidName = "_ym_uid"; 
+		return getValueFromCookies(request, "_ym_uid");
+	}
+	
+	private static String getValueFromCookies(final HttpServletRequest request, final String key) {	
 		String defaultValue = "";
 		if (request == null) {
 			return defaultValue;
@@ -41,14 +48,14 @@ public class WebHelper {
 		if (cookies == null) {
 			return defaultValue;
 		}
-
+		
 		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase(uidName)) {
+			if (cookie.getName().equalsIgnoreCase(key)) {
 				return cookie.getValue();
 			}
 		}
 		
-		return defaultValue;
-
+		return defaultValue;		
 	}
+	
 }

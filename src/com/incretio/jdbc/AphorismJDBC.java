@@ -33,6 +33,31 @@ public class AphorismJDBC {
 			e.printStackTrace();
 		}
 	}
+	
+	public static List<String> getMyLikedAphorism(final String userId) {
+		List<String> result = new ArrayList<>();
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			try (Connection conn = DriverManager
+					.getConnection("jdbc:mysql://localhost/IncretioSite?user=incretio&password=IncreKantra27&characterEncoding=utf8");
+					PreparedStatement stmt = conn
+							.prepareStatement("SELECT * FROM Aphorism a INNER JOIN AphorismLike al on (a.id = al.aphorism_id) where al.user_id = ?");) {
+				stmt.setString(1, userId);				
+				ResultSet rs = stmt.executeQuery();
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					result.add(String.valueOf(id));
+				}
+			}
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 
 	public static List<AphorismVo> getAllAphorism() {
 		List<AphorismVo> result = new ArrayList<>();
