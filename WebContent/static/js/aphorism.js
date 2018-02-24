@@ -46,7 +46,7 @@ function login() {
 }
 
 function refreshLikeIcons(userId) {
-	if (userId === "undefined" || userId.length === 0){
+	if (userId === "undefined"){
 		return;
 	}
     $.ajax({

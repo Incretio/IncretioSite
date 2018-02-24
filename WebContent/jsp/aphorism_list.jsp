@@ -18,38 +18,40 @@
 		<script src="/static/js/utils.js" ></script>
 		<script src="/static/js/vk_api_help.js"></script>
 	</head>	
-	<body>			
-		<div class="vk_auth_link link">			
-			<span class="vk_icon"></span>		
-		</div>
-		<c:forEach var="aphorism" items="${aphorismList}">
-			<c:set var="wasLiked" value="${aphorism.wasLiked ? 'liked' : ''}"/>
-			<div class="aphorism_block">
-				<span id="${aphorism.id}" class="like_link link ${wasLiked}">
-					<span class="like_icon"></span>				
-					<span class="like_count">${aphorism.likeCount}</span>				
-				</span>
-				<div class="time_block">										
-					<fmt:formatDate value="${aphorism.createdTime}" pattern="dd MMM yyyy в HH:mm:ss"/>											
+	<body>	
+		<div class="layout">
+			<div class="auth_block">
+				<h3>Авторизация:</h3>
+				<div class="vk_auth_link vk_icon link"></div>
+			</div>							
+			<c:forEach var="aphorism" items="${aphorismList}">
+				<c:set var="wasLiked" value="${aphorism.wasLiked ? 'liked' : ''}"/>
+				<div class="aphorism_block">
+					<span id="${aphorism.id}" class="like_link link ${wasLiked}">
+						<span class="like_icon"></span>				
+						<span class="like_count">${aphorism.likeCount}</span>				
+					</span>
+					<div class="time_block">										
+						<fmt:formatDate value="${aphorism.createdTime}" pattern="dd MMM yyyy в HH:mm:ss"/>											
+					</div>
+					<div class="text_block">
+						${aphorism.text}					
+					</div>
+					<div class="author_block">
+						${aphorism.author}
+					</div>
 				</div>
-				<div class="text_block">
-					${aphorism.text}					
-				</div>
-				<div class="author_block">
-					${aphorism.author}
-				</div>
+			</c:forEach>
+			
 			</div>
-		</c:forEach>
-		
 		<script>
 			vkInit();
-			/*refreshLikeIcons(getUserId());*/
 			$(".like_link").click(function() {
 				likeClick(this);
 			});
 			$(".vk_auth_link").click(function() {
 				login();
-			});		
+			});
 		</script>
 	</body>
 </html>	

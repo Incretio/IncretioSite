@@ -1,12 +1,15 @@
 @charset "UTF-8";
+body {
+	background: #0D1708;
+}
 .aphorism_block {
-	width: 600px;
-	margin: 15px auto 15px auto;
+	width: 530px;
+	margin: 15px auto 15px 0px;
 	padding: 20px;
 	background: #bbbbbb;
-	border: 2px solid rgba(0, 0, 0, 0.75);
+	border: 2px solid rgba(100, 100, 100, 0.75);
 	border-radius: 25px;
-	box-shadow: 5px 5px 5px rgba(50, 0, 0, 0.5);
+	box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.6);
 }
 .aphorism_block:nth-child(odd) {
 	background: #bbbb90;
@@ -50,13 +53,25 @@
 :focus {
 	outline: none;
 }
-.vk_icon {	
-	float: left;
+.vk_icon {
 	background: url(/static/img/vk_icon.png) no-repeat;
 	height: 48px;
 	width: 48px;
+	transition: filter 0.5s;
 }
-
+.vk_icon:hover {
+	filter: drop-shadow(0px 0px 10px red);
+}
 .link {
 	cursor: pointer;
+}
+.layout {
+	margin: 0 auto;
+	width: 800px;
+}
+.auth_block {
+	float: right;
+	text-align: center;
+	color: wheat;
+	width: 150px;
 }
