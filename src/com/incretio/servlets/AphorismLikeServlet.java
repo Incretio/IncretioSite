@@ -51,8 +51,6 @@ public class AphorismLikeServlet extends HttpServlet {
 		
 		int likeCountLocal = BaseJDBC.getLikeCount(aphorismId);
 		boolean userLikedLocal = BaseJDBC.wasLiked(userId, aphorismId);
-		//System.out.println("likeCount = " + likeCount);
-		//response.getWriter().write(String.valueOf(likeCount));
 		AphorismInfo aphorismInfo = new AphorismInfo();
 		aphorismInfo.setLikeCount(likeCountLocal);
 		aphorismInfo.setUserLiked(userLikedLocal);

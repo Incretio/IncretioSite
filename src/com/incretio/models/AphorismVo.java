@@ -10,6 +10,8 @@ public class AphorismVo {
 	private String author;
 	private int likeCount;
 	private boolean wasLiked;
+	private String video;
+	private String image;
 
 	public AphorismVo() {
 		super();
@@ -21,6 +23,12 @@ public class AphorismVo {
 		this.createdTime = createdTime;
 		this.text = text;
 		this.author = author;
+	}
+	
+	public AphorismVo(int id, Date createdTime, String text, String author, String video, String image) {
+		this(id, createdTime, text, author);
+		this.video = video;
+		this.image = image;
 	}
 	
 	public int getLikeCount() {
@@ -69,6 +77,22 @@ public class AphorismVo {
 
 	public void setWasLiked(boolean wasLiked) {
 		this.wasLiked = wasLiked;
+	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

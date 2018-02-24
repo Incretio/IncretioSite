@@ -6,7 +6,7 @@
 	<head>		
 		<meta charset="utf-8">	
 		<link rel="stylesheet" type="text/css" href="/static/css/aphorism_add.css">
-		<script src="<c:url value="/static/js/utils.js" />"></script>
+		<script src="/static/js/utils.js"></script>
 		<script>
 			window.onload = function setDateTimeToNow() {
 				var dateTime = getISO8601DateTime(new Date());			
@@ -24,7 +24,23 @@
 					<div class="cell">
 						<input id="createdTime" name="createdTime" type="datetime-local">
 					</div>	
-				</div>			
+				</div>		
+				<div class="row">
+					<div class="cell">
+						<label for="video">Код видео YouTube:</label>
+					</div>	
+					<div class="cell">
+						<input id="video" type="text" name="video"></input>	
+					</div>	
+				</div>
+				<div class="row">
+					<div class="cell">
+						<label for="image">Url изображения:</label>
+					</div>	
+					<div class="cell">
+						<input id="image" type="text" name="image"></input>	
+					</div>	
+				</div>	
 				<div class="row">
 					<div class="cell">
 						<label for="text">Текст:</label>

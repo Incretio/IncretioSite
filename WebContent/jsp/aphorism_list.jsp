@@ -34,6 +34,14 @@
 					<div class="time_block">										
 						<fmt:formatDate value="${aphorism.createdTime}" pattern="dd MMM yyyy в HH:mm:ss"/>											
 					</div>
+					<c:if test="${aphorism.video != null && !aphorism.video.isEmpty()}">
+						<iframe src="https://www.youtube.com/embed/${aphorism.video}?rel=0&amp;showinfo=0" 
+							frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+						</iframe>
+					</c:if>
+					<c:if test="${aphorism.image != null && !aphorism.image.isEmpty()}">
+						<img class="image" src="${aphorism.image}"></img>
+					</c:if>
 					<div class="text_block">
 						${aphorism.text}					
 					</div>
