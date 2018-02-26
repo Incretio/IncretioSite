@@ -15,7 +15,7 @@
 		</script>
 	</head>
 	<body>		
-		<form action="aphorism_add" method="post">
+		<form action="aphorism_add" method="post" enctype="multipart/form-data">
 			<div class="table">
 				<div class="row">
 					<div class="cell">
@@ -38,7 +38,15 @@
 						<label for="image">Url изображения:</label>
 					</div>	
 					<div class="cell">
-						<input id="image" type="text" name="image"></input>	
+						<input id="image" type="text" name="image" maxlength="500"></input>	
+					</div>	
+				</div>	
+				<div class="row">
+					<div class="cell">
+						<label for="user_image">Загрузить изображение:</label>
+					</div>	
+					<div class="cell">
+						<input id="user_image" type="file" name="user_image"></input>	
 					</div>	
 				</div>	
 				<div class="row">
