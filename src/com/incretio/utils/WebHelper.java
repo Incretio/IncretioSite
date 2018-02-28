@@ -1,5 +1,12 @@
 package com.incretio.utils;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,6 +63,18 @@ public class WebHelper {
 		}
 		
 		return defaultValue;		
+	}
+	
+	public static String saveFileToServer(final String fileUrl, String targetPath) throws IOException {
+		URL website = new URL(fileUrl);
+		String urlHash = String.valueOf(website.hashCode());
+		String fileName = String.format("%s_%s", urlHash, new File(fileUrl).getName());
+		try (ReadableByteChannel rbc = Channels.newChannel(website.openStream())) {
+			try (FileOutputStream fos = new FileOutputStream(targetPath + fileName)) {
+				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+			}
+		}
+		return fileName;
 	}
 	
 }

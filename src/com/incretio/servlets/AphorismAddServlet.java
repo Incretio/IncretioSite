@@ -20,6 +20,7 @@ import com.incretio.jdbc.AphorismJDBC;
 import com.incretio.models.AphorismVo;
 import com.incretio.utils.DateFormatExt;
 import com.incretio.utils.HtmlFormatter;
+import com.incretio.utils.WebHelper;
 
 @MultipartConfig
 public class AphorismAddServlet extends HttpServlet {
@@ -40,41 +41,39 @@ public class AphorismAddServlet extends HttpServlet {
 		String image = HtmlFormatter.convertISO_8859_1ToUtf8(request.getParameter("image"));
 		String text = HtmlFormatter.convertISO_8859_1ToUtf8(request.getParameter("text"));
 		String author = HtmlFormatter.convertISO_8859_1ToUtf8(request.getParameter("author"));
-
-		/*Part part = request.getPart("user_image");
-		System.out.println("file name = " + part.getName());
-		for (String value : part.getHeaderNames()) {
-			System.out.print("header name " + value + " = ");
-			System.out.println(part.getHeader(value));
-		}
-		https://docs.oracle.com/javaee/6/tutorial/doc/glraq.html
-		*/
-
 		
-		String postImagesPath = "/home/rodin/";
-		try {
-			URL website = new URL(image);
-			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-			String fileName = new File(image).getName();
-			System.out.println(fileName);
-			try (FileOutputStream fos = new FileOutputStream(postImagesPath + fileName)) {
-				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String serverImagePath = getServletContext().getInitParameter("serverImagePath");
 		
+		String appPath = request.getServletContext().getRealPath("/");
+		String targetPath = appPath.concat(serverImagePath.replaceFirst("/", ""));
+		new File(targetPath).mkdirs();
+		String fileName = "";
+		if (!image.isEmpty()) {
+			// ToDo: error if file not image extension
+			// example: /static/img/content/2096675020_g17T4.jpg?s=128&g=1
+			// 	https://www.gravatar.com/avatar/ba1627f54e3b9c1d5f1ecb27b44b0b07?s=32&d=identicon&r=PG
+			fileName = WebHelper.saveFileToServer(image, targetPath);
+		}
+
+		/*
+		 * Part part = request.getPart("user_image"); System.out.println("file name = "
+		 * + part.getName()); for (String value : part.getHeaderNames()) {
+		 * System.out.print("header name " + value + " = ");
+		 * System.out.println(part.getHeader(value)); }
+		 * https://docs.oracle.com/javaee/6/tutorial/doc/glraq.html
+		 */
 
 		AphorismVo aphorism = new AphorismVo();
 		aphorism.setCreatedTime(createdTime);
 		aphorism.setVideo(video);
-		aphorism.setImage(image);
+		aphorism.setImage(serverImagePath.concat(fileName));
 		aphorism.setText(text);
 		aphorism.setAuthor(author);
 
 		AphorismJDBC.addAphorism(aphorism);
 		doGet(request, response);
 	}
+
+	
 
 }

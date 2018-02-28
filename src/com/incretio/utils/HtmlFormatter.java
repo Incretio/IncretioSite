@@ -15,6 +15,9 @@ public class HtmlFormatter {
 	}
 	
 	public static String convertISO_8859_1ToUtf8(final String text) {
+		if (text == null || text.isEmpty()) {
+			return text;
+		}
 		byte[] bytes = text.getBytes(StandardCharsets.ISO_8859_1);
 		return new String(bytes, StandardCharsets.UTF_8);
 	}
